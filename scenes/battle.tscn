@@ -1,0 +1,177 @@
+[gd_scene load_steps=14 format=3 uid="uid://dkp1bkhgpc0yj"]
+
+[ext_resource type="Texture2D" uid="uid://ckanlwqj7d6w1" path="res://assets/coin.png" id="1_631rh"]
+[ext_resource type="Script" path="res://scripts/battle.gd" id="1_hoxdr"]
+[ext_resource type="Texture2D" uid="uid://chykxqh8xkicx" path="res://assets/cointossanimation.jpg" id="3_xag38"]
+[ext_resource type="PackedScene" uid="uid://cveyvt1gx4hie" path="res://scenes/player.tscn" id="4_2kwiy"]
+[ext_resource type="PackedScene" uid="uid://dr1nsjtsv7c7p" path="res://scenes/enemy.tscn" id="5_7hvky"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwqj3"]
+atlas = ExtResource("3_xag38")
+region = Rect2(20, 0, 192, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y041q"]
+atlas = ExtResource("3_xag38")
+region = Rect2(212, 0, 192, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fo3q"]
+atlas = ExtResource("3_xag38")
+region = Rect2(404, 0, 192, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndlmy"]
+atlas = ExtResource("3_xag38")
+region = Rect2(596, 0, 192, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvc1j"]
+atlas = ExtResource("3_xag38")
+region = Rect2(788, 0, 192, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtuos"]
+atlas = ExtResource("3_xag38")
+region = Rect2(980, 0, 192, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujr8e"]
+atlas = ExtResource("3_xag38")
+region = Rect2(1172, 0, 192, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uq3fd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwqj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y041q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fo3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndlmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvc1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtuos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujr8e")
+}],
+"loop": false,
+"name": &"default",
+"speed": 14.0
+}]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_hoxdr")
+
+[node name="CoinTossButton" type="TextureButton" parent="."]
+offset_left = 214.0
+offset_top = 31.0
+offset_right = 1238.0
+offset_bottom = 1055.0
+scale = Vector2(0.0814196, 0.0814196)
+texture_normal = ExtResource("1_631rh")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CoinTossButton"]
+layout_mode = 0
+offset_left = -1007.13
+offset_top = 270.205
+offset_right = 39.872
+offset_bottom = 774.205
+theme_override_font_sizes/font_size = 270
+text = "5 / 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Outcome" type="ColorRect" parent="."]
+offset_left = 334.0
+offset_top = 11.0
+offset_right = 374.0
+offset_bottom = 51.0
+scale = Vector2(3.23028, 3.23028)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Outcome"]
+position = Vector2(21.6699, 19.1934)
+scale = Vector2(0.157218, 0.1015)
+sprite_frames = SubResource("SpriteFrames_uq3fd")
+frame = 6
+frame_progress = 1.0
+
+[node name="OutcomeLabel" type="Label" parent="Outcome"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -15.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "HEADS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 550.0
+offset_top = 15.0
+offset_right = 1044.0
+offset_bottom = 306.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="OutcomeHistory" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Last Outcomes: "
+
+[node name="Button" type="Button" parent="."]
+offset_left = 185.0
+offset_top = 534.0
+offset_right = 378.0
+offset_bottom = 594.0
+text = "(H)
+Deal 5 damage."
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 441.0
+offset_top = 534.0
+offset_right = 634.0
+offset_bottom = 594.0
+text = "(H - H)
+Deal 12 damage."
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 712.0
+offset_top = 533.0
+offset_right = 905.0
+offset_bottom = 593.0
+text = "(H - H - T)
+Deal 25 damage."
+
+[node name="EndTurn" type="Button" parent="."]
+offset_left = 445.0
+offset_top = 421.0
+offset_right = 638.0
+offset_bottom = 481.0
+text = "END TURN"
+
+[node name="Player" parent="." instance=ExtResource("4_2kwiy")]
+position = Vector2(165, 346)
+scale = Vector2(0.772875, 0.772875)
+
+[node name="Enemy" parent="." instance=ExtResource("5_7hvky")]
+position = Vector2(929, 358)
+
+[connection signal="pressed" from="CoinTossButton" to="." method="_on_coin_toss_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="EndTurn" to="." method="_on_end_turn_pressed"]

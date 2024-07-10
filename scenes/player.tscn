@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cveyvt1gx4hie"]
+
+[ext_resource type="Texture2D" uid="uid://ck033g1jduuij" path="res://assets/pyromancer.jpg" id="1_u45dq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vc37"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imt1h"]
+bg_color = Color(0.801263, 4.23551e-06, 2.88785e-07, 1)
+
+[node name="Player" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.413798, 0.413798)
+texture = ExtResource("1_u45dq")
+region_enabled = true
+region_rect = Rect2(0, 0, 581.938, 888)
+
+[node name="PlayerHPBar" type="ProgressBar" parent="."]
+offset_left = -118.0
+offset_top = -231.0
+offset_right = 122.0
+offset_bottom = -204.0
+theme_override_styles/background = SubResource("StyleBoxFlat_8vc37")
+theme_override_styles/fill = SubResource("StyleBoxFlat_imt1h")
+value = 100.0
